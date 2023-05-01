@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card-columns">
+    {% for phone in object_list %}
+      <div class="card">
+        <a href="{{ phone.get_absolute_url }}">
+          <img class="card-img-top" src="{{ phone.image }}" alt="{{ phone.name }}">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title"><a href="{{ phone.get_absolute_url }}">{{ phone.name }}</a></h5>
+          <p class="card-text">Цена: {{ phone.price }} руб.</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

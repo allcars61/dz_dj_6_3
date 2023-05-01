@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{ object.image }}" class="card-img" alt="{{ object.name }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ object.name }}</h5>
+          <p class="card-text">Цена: {{ object.price }} руб.</p>
+          <p class="card-text">Дата выхода: {{ object.release_date }}</p>
+          {% if object.lte_exists %}
+            <p class="card-text">LTE: есть</p>
+          {% else %}
+            <p class="card-text">LTE: нет</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

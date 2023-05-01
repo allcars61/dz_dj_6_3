@@ -1,0 +1,28 @@
+{% extends 'search.html' %}
+
+{% block content %}
+  <form method="GET" action="{% url 'phone_list' %}">
+    <div class="form-group">
+      <input type="text" class="form-control" name="query" placeholder="Поиск...">
+    </div>
+    <button type="submit" class="btn btn-primary">Найти</button>
+  </form>
+
+  {% if phones %}
+    <div class="card-columns mt-4">
+      {% for phone in phones %}
+        <div class="card">
+          <a href="{{ phone.get_absolute_url }}">
+            <img class="card-img-top" src="{{ phone.image }}" alt="{{ phone.name }}">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title"><a href="{{ phone.get_absolute_url }}">{{ phone.name }}</a></h5>
+            <p class="card-text">Цена: {{ phone.price }} руб.</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-center mt-4">Ничего не найдено.</p>
+  {% endif %}
+{% endblock %}
